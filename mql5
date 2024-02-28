@@ -1,0 +1,90 @@
+
+//+------------------------------------------------------------------+
+//|                        Heikin Ashi Dashboard MT5                  |
+//|                    Developer: Forex Robot Easy Team               |
+//|                 Website: forexroboteasy.com                       |
+//+------------------------------------------------------------------+
+
+#property copyright 'Forex Robot Easy Team'
+#property link      'forexroboteasy.com'
+
+//+------------------------------------------------------------------+
+//|                        Indicator Parameters                       |
+//+------------------------------------------------------------------+
+input string Currencies = 'EURUSD,GBPUSD,USDJPY'; // Desired currencies
+input ENUM_TIMEFRAMES Periods = PERIOD_M15; // Desired periods
+
+//+------------------------------------------------------------------+
+//|                     Indicator Initialization                     |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Add necessary initialization code here
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//|                   Indicator Calculation Function                  |
+//+------------------------------------------------------------------+
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const datetime &time[],
+                const double &open[],
+                const double &high[],
+                const double &low[],
+                const double &close[],
+                const long &tick_volume[],
+                const long &volume[],
+                const int &spread[])
+{
+    // Add necessary calculation code here
+    
+    // Check for trend change and send notification
+    if (IsTrendChange())
+    {
+        SendNotification('Trend Change Detected');
+    }
+    
+    // Check for reversal or consolidation candle and send notification
+    if (IsReversalCandle() || IsConsolidationCandle())
+    {
+        SendNotification('Reversal/Consolidation Candle Detected');
+    }
+    
+    return(rates_total);
+}
+
+//+------------------------------------------------------------------+
+//|                    Check for Trend Change Function                |
+//+------------------------------------------------------------------+
+bool IsTrendChange()
+{
+    // Add logic to check for trend change here
+    return(false); // Return true if trend change detected, otherwise false
+}
+
+//+------------------------------------------------------------------+
+//|                Check for Reversal Candle Function                 |
+//+------------------------------------------------------------------+
+bool IsReversalCandle()
+{
+    // Add logic to check for reversal candle here
+    return(false); // Return true if reversal candle detected, otherwise false
+}
+
+//+------------------------------------------------------------------+
+//|              Check for Consolidation Candle Function              |
+//+------------------------------------------------------------------+
+bool IsConsolidationCandle()
+{
+    // Add logic to check for consolidation candle here
+    return(false); // Return true if consolidation candle detected, otherwise false
+}
+
+//+------------------------------------------------------------------+
+//|                  Send Notification Function                       |
+//+------------------------------------------------------------------+
+void SendNotification(string message)
+{
+    // Add logic to send notification here
+}
